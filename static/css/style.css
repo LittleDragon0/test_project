@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+#timer-display {
+    font-size: 120px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #e0e0e0;
+    text-shadow: 0 0 20px rgba(224, 224, 224, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 20px 60px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 300px;
+    text-align: center;
+    user-select: none;
+}
+
+button {
+    font-size: 18px;
+    padding: 14px 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    min-width: 140px;
+}
+
+#btn-start {
+    background-color: #27ae60;
+    color: #ffffff;
+}
+
+#btn-start:hover:not(:disabled) {
+    background-color: #2ecc71;
+    transform: scale(1.05);
+}
+
+#btn-start:disabled {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#btn-reset {
+    background-color: #e67e22;
+    color: #ffffff;
+}
+
+#btn-reset:hover {
+    background-color: #f39c12;
+    transform: scale(1.05);
+}
+
+/* Warning state: red pulsing when <= 10 seconds */
+#timer-display.warning {
+    color: #e74c3c;
+    text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+    animation: pulse 0.5s ease-in-out infinite alternate;
+}
+
+/* Finished state: countdown reached 0 */
+#timer-display.finished {
+    color: #e74c3c;
+    text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+}
+
+@keyframes pulse {
+    from {
+        opacity: 1.0;
+    }
+    to {
+        opacity: 0.5;
+    }
+}
+
+/* Responsive: smaller screens */
+@media (max-width: 480px) {
+    #timer-display {
+        font-size: 80px;
+        padding: 15px 30px;
+        min-width: 200px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 12px 30px;
+    }
+}
